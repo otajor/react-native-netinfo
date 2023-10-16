@@ -212,7 +212,8 @@ public abstract class ConnectivityReceiver {
                 break;
             case "wifi":
                 if (NetInfoUtils.isAccessWifiStatePermissionGranted(getReactContext()) && mWifiManager != null) {
-                    WifiInfo wifiInfo = mWifiManager.getConnectionInfo();
+                    // Set wifiInfo to null to avoid calling the API which accesses user's (B)SSID & IP address
+                    WifiInfo wifiInfo = null;
                     if (wifiInfo != null) {
                         // Get the SSID
                         try {
